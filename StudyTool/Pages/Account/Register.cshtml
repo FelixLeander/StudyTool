@@ -1,0 +1,36 @@
+﻿@page
+@namespace StudyTool.Pages.Account
+@model RegisterModel
+@{
+}
+
+
+<div class="d-flex">
+    <div class="container row align-bottom">
+        <div class="col-sm col-xs"></div>
+        <div class="card col-sm col-xs">
+            <form method="post" asp-page-handler="Register">
+
+                <div class="card-header">
+                    <h2>Register - THIS PAGE NEEDS GROUND UP REWORKING</h2>
+                </div>
+
+                <div class="card-body">
+                    <label for="DisplayName" class="form-label">Display Name</label>
+                    <input type="text" class="form-control" id="DisplayName" placeholder="DisplayName" name="DisplayName" asp-for="DisplayName" required />
+
+                    <label for="EmailAddress" class="form-label">EmailAddress</label>
+                    <input type="text" class="form-control" id="EmailAddress" placeholder="EmailAddress" name="EmailAddress" asp-for="EmailAddress" required />
+
+                    <label for="Password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="Password" placeholder="Password" name="Password" asp-for="Password" required />
+                </div>
+
+                <div class="card-footer">
+                    <button class="btn btn-primary float-end mb-2 px-4" type="submit">Register</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm col-xs"></div>
+    </div>
+</div>

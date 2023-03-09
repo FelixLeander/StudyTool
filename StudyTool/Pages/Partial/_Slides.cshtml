@@ -1,0 +1,11 @@
+﻿@model (SlidesModel model, List<string> slides)
+
+
+<h1>Slides says hi</h1>
+
+@foreach (var slide in Model.slides)
+{
+    <div>
+        @Html.Raw(slide)
+    </div>
+}

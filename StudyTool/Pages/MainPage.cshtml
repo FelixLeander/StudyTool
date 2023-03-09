@@ -1,0 +1,59 @@
+﻿@page
+@using Aspose.Slides;
+@using System.Text;
+@using Microsoft.AspNetCore.Components;
+@model MainPageModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center container">
+    <div class="row">
+
+        <div class="col">
+            <h1>ChatGPT</h1>
+
+            <textarea class="flex-fill form-control" name="cardText" placeholder="Enter your card's text"></textarea>
+        </div>
+
+        <div class="col">
+            <h1>Presentation</h1>
+            @if (Model._presentation == null)
+            {
+                <h1>You need to upload a file</h1>
+            }
+            else
+            {
+                foreach (ISlide sld in new Presentation(Model._presentation).Slides)
+                {
+                    var SvgStream = new MemoryStream();
+
+                    sld.WriteAsSvg(SvgStream);
+                    SvgStream.Position = 0;
+
+                    string rawSvg = Encoding.UTF8.GetString(SvgStream.ToArray());
+                    int startIndex = rawSvg.IndexOf("<svg version");
+                    var processedSVG = rawSvg.Substring(startIndex).Replace("width=\"13.333333in\" height=\"7.5in\"", "height=\"100%\"");
+                    Console.WriteLine();
+
+                    <div>
+                        @Html.Raw(processedSVG)
+                    </div>
+
+                    <h1>NEXT</h1>
+                    //<object type="image/svg+xml" data="@content"> </object>
+
+                    SvgStream.Close();
+                }
+            }
+
+        </div>
+
+        <div class="col">
+            <h1>Notes</h1>
+
+            <textarea class="flex-fill form-control" name="cardText" placeholder="Enter your card's text"></textarea>
+        </div>
+
+    </div>
+</div>

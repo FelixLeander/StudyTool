@@ -1,0 +1,38 @@
+﻿@page
+@namespace StudyTool.Pages.Account
+@model LoginModel
+@{
+}
+
+<div class="container w-50">
+    <div class="card">
+
+        @if (!string.IsNullOrWhiteSpace(Model._errorMessage))
+        {
+            <br />
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <strong>Login failed!</strong> Username and / or password are invalid or you don't have the necessary permission to access the site.
+            </div>
+        }
+
+        <form method="post">
+
+            <div class="card-header">
+                <h2 class="card-title">Login</h2>
+            </div>
+
+            <div class="card-body">
+                <label for="inputEmailAddress" class="form-label">E-Mail Address</label>
+                <input name="EmailAddress" asp-for="Input.EmailAddress" type="text" class="form-control" id="inputEmailAddress" placeholder="E-Mail Address" required />
+
+                <label for="inputPasssword" class="form-label">Password</label>
+                <input name="Password" asp-for="Input.Password" type="password" class="form-control" id="inputPasssword" placeholder="Enter password" required />
+            </div>
+
+            <div class="card-footer">
+                <button asp-page-handler="CardClose" class="btn btn-primary float-end mb-2 px-4">Login</button>
+            </div>
+        </form>
+    </div>
+</div>

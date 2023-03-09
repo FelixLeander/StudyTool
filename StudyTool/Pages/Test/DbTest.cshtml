@@ -1,0 +1,18 @@
+﻿@page
+@namespace StudyTool.Pages.Test
+@model DbTestModel
+@{
+}
+
+<div class="container">
+    <div class="form-floating">
+        <form method="post" asp-page-handler="CreateUser">
+
+            <textarea name="userName" class="flex-fill form-control mt-2 border-3" placeholder="Username"></textarea>
+            <textarea name="userMail" class="flex-fill form-control mt-2 border-3" placeholder="E-Mail"></textarea>
+            <textarea name="userPassword" class="flex-fill form-control mt-2 border-3" placeholder="Password"></textarea>
+
+            <button class="float-end btn-primary btn">Create User</button>
+        </form>
+    </div>
+</div>

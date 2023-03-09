@@ -1,0 +1,26 @@
+﻿@page
+@using Aspose.Slides;
+@using System.Text;
+@using Microsoft.AspNetCore.Components;
+@using StudyTool.Pages.Partial;
+
+@model WorkPageModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col">
+            <partial name="/Pages/Partial/_Api.cshtml" model="new ApiModel()"></partial>
+        </div>
+
+        <div class="col">
+            <partial name="/Pages/Partial/_Slides.cshtml" model="(new SlidesModel() , Model._slides)"></partial>
+        </div>
+
+        <div class="col">
+            <partial name="/Pages/Partial/_Notes.cshtml" model="new NotesModel()"></partial>
+        </div>
+    </div>
+</div>

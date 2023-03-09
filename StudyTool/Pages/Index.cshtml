@@ -1,0 +1,18 @@
+﻿@page
+@namespace StudyTool.Pages.Common
+@model IndexModel
+@{
+}
+
+<div class="text-center d-flex flex-column">
+    <h2>Upload Presentation</h2>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" asp-for="Upload" />
+        <input type="submit" />
+    </form>
+
+    <h4>
+        <a href="/Workspace/WorkPage?FileName=TEST.pptx">Easy Test</a>
+        <a href="/Workspace/WorkPage?FileName=MCAT.pptx">Normal Test</a>
+    </h4>
+</div>

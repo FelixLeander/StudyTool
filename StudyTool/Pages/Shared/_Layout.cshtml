@@ -1,0 +1,72 @@
+﻿@using StudyTool.Data;
+@inject IHttpContextAccessor _contextAccessor
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - StudyTool</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/StudyTool.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <div class="fixed-top">
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark py-0">
+                <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                    <ul class="navbar-nav mr-auto ms-5">
+                        <li class="nav-item active">
+                            <a class="nav-link text-light" asp-page="/Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-page="/Common/Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="mx-auto order-0">
+                    <a class="navbar-brand mx-auto" asp-page="/Index">@AppValues.AppNameUserFriendly</a>
+                </div>
+
+                <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                    <ul class="navbar-nav ms-auto me-5">
+                        @if (_contextAccessor.HttpContext?.User.Identity?.IsAuthenticated ?? false)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-page="/Account/Logout">Logout @_contextAccessor.HttpContext.User.Identity.Name</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="/Account/Login?returnUrl=@(Url.Content(this._contextAccessor.HttpContext?.GetEndpoint()?.DisplayName ?? ""))">Login</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <main role="main" class="mt-5">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="fixed-bottom border-top text-center text-muted py-1 bg-white">
+        <div class="container">
+            &copy; 2023 - CardBoard -
+            <a href="https://discord.com/users/536544797997924362">Feedback</a>
+            - <a asp-page="/Common/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
