@@ -5,14 +5,32 @@ using StudyTool.Data;
 
 namespace StudyTool.BusinessLogic;
 
+/// <summary>
+/// The class which manages password/salt creation & validation.
+/// </summary>
 public class HashManager
 {
+    /// <summary>
+    /// The logger instance for <see cref="HashManager"/>.
+    /// </summary>
     private readonly ILogger<HashManager> _logger;
+    
+    /// <summary>
+    /// Constructor injecting logger.
+    /// </summary>
+    /// <param name="logger">the logger instance.</param>
     public HashManager(ILogger<HashManager> logger)
     {
         _logger = logger;
     }
 
+    /// <summary>
+    /// Confirms if a hash & salt is matching the given password.
+    /// </summary>
+    /// <param name="password">the text to match.</param>
+    /// <param name="salt">the salt</param>
+    /// <param name="actualHash">the actual hash</param>
+    /// <returns></returns>
     internal bool ConfirmMatchingHashArgon2Hash(string password, byte[] salt, byte[] actualHash)
     {
         try

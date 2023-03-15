@@ -4,8 +4,15 @@ using StudyTool.Data;
 
 namespace StudyTool;
 
-public class Startup
+/// <summary>
+/// The class which starts the project.
+/// </summary>
+public static class Startup
 {
+    /// <summary>
+    /// Entry point for the application.
+    /// </summary>
+    /// <param name="args">the arguments for the applicataion.</param>
     public static void Main(string[] args)
     {
         var loggerConfig = new LoggerConfiguration()
